@@ -34,7 +34,7 @@ npm run lint
 
 | Library: |
 |:---|
-| VueJs - https://vuejs.org/ |
+| VueJs - https://vuejs.org |
 
 By CIMO - https://reinventsoftware.org
 

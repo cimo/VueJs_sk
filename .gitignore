@@ -1,5 +1,4 @@
 .DS_Store
-node_modules
 
 # local env files
 .env.local
@@ -19,3 +18,10 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# cimo +
+.digest_htpasswd
+.env
+error.log
+debug.log
+node_modules
