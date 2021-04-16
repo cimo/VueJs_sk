@@ -6,6 +6,7 @@ Starter kit code for web app. Create in a few steps the complete VueJs project.
 | Info: |
 |:---|
 | Cross platform (Windows, Linux, Mac, Android, Ios) |
+| VueJs version: 2.6.12 |
 
 ### Project setup
 ```

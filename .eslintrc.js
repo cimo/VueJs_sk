@@ -1,18 +1,22 @@
 module.exports = {
     root: true,
     env: {
+        browser: true,
         node: true
     },
-    extends: ["plugin:vue/essential", "eslint:recommended", "@vue/typescript", "@vue/prettier", "@vue/prettier/@typescript-eslint"],
     parserOptions: {
         ecmaVersion: 2020
     },
+    extends: ["eslint:recommended", "plugin:vue/essential", "@vue/typescript", "@vue/prettier", "@vue/prettier/@typescript-eslint"],
     rules: {
         "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-        curly: "error",
+        "object-curly-spacing": "off",
+        "sort-imports": "off",
+        "no-unused-vars": "off",
         "no-empty-function": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-empty-function": "off",
         "prettier/prettier": [
             "error",
@@ -35,7 +39,8 @@ module.exports = {
                 useTabs: false,
                 vueIndentScriptAndStyle: true
             }
-        ]
+        ],
+        curly: ["error"]
     },
     overrides: [
         {
@@ -47,6 +52,7 @@ module.exports = {
         {
             files: ["*.vue"],
             rules: {
+                "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": [2, { args: "none" }]
             }
         }
