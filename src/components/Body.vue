@@ -1,5 +1,5 @@
 <template>
-    <div class="body_component">
+    <div class="component_body">
         <p>{{ message }}</p>
     </div>
 </template>
@@ -7,44 +7,45 @@
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
 
-    @Component
-    export default class Body extends Vue {
+    @Component({
+        components: {}
+    })
+
+    export default class ComponentBody extends Vue {
+        // Variables
         private message: string = "cimo";
 
-        private loadEvent(): void {
-            document.addEventListener("click", this.clickEvent, { passive: true });
-            document.addEventListener("dblclick", this.doubleClickEvent, { passive: true });
-            document.addEventListener("change", this.changeEvent, { passive: true });
-        }
-
-        private clickEvent(): void {}
-
-        private doubleClickEvent(): void {}
-
-        private changeEvent(): void {}
-
-        private resizeEvent(): void {}
-
+        // Hooks
         public created(): void {
-            window.addEventListener("load", this.loadEvent, { passive: true });
-            window.addEventListener("resize", this.resizeEvent, { passive: true });
+            window.addEventListener("load", this.logicLoadEvent, { passive: true });
+            window.addEventListener("resize", this.logicResizeEvent, { passive: true });
         }
 
-        public mounted(): void {}
+        public destroyed(): void {
+            window.removeEventListener("load", this.logicLoadEvent, false);
+            window.removeEventListener("resize", this.logicResizeEvent, false);
 
-        public updated(): void {}
-
-        public beforeDestroy(): void {
-            window.removeEventListener("load", this.loadEvent, false);
-            window.removeEventListener("resize", this.resizeEvent, false);
-
-            document.removeEventListener("click", this.clickEvent, false);
-            document.removeEventListener("dblclick", this.doubleClickEvent, false);
+            document.removeEventListener("click", this.logicClickEvent, false);
+            document.removeEventListener("dblclick", this.logicDoubleClickEvent, false);
         }
+
+        // Logic
+        private logicLoadEvent(): void {
+            document.addEventListener("click", this.logicClickEvent, { passive: true });
+            document.addEventListener("dblclick", this.logicDoubleClickEvent, { passive: true });
+            document.addEventListener("change", this.logicChangeEvent, { passive: true });
+        }
+
+        private logicResizeEvent(): void {}
+
+        private logicClickEvent(): void {}
+
+        private logicDoubleClickEvent(): void {}
+
+        private logicChangeEvent(): void {}
     }
 </script>
 
 <style scoped lang="scss">
-    .body_component {
-    }
+    .component_body {}
 </style>
