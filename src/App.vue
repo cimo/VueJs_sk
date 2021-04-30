@@ -1,26 +1,29 @@
 <template>
     <div id="app">
-        <BodyComponent />
+        <ComponentBody />
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
-    import BodyComponent from "./components/Body.vue";
+    // Source
+    import ComponentBody from "./components/Body.vue";
 
     @Component({
         components: {
-            BodyComponent
+            ComponentBody
         }
     })
-    export default class App extends Vue {
-        public created(): void {}
 
-        public mounted(): void {}
+    export default class ComponentApp extends Vue {
+        // Variables
 
-        public updated(): void {}
+        // Hooks
+        protected created(): void {}
 
-        public beforeDestroy(): void {}
+        protected destroyed(): void {}
+
+        // Logic
     }
 </script>
 
